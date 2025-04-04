@@ -45,8 +45,10 @@ class TestBooksCollector:
         collector.set_book_genre('Гарри Поттер', 'Фантастика')
         assert collector.get_books_with_specific_genre('Фантастика') == ['Аватар','Гарри Поттер']
 
-    def test_get_books_genre_get_empty(self,collector):
-        assert collector.books_genre == {}
+    def test_get_books_genre_from_one_book_and_genre(self,collector):
+        collector.add_new_book('Аватар')
+        collector.set_book_genre('Аватар', 'Фантастика')
+        assert collector.books_genre['Аватар'] == 'Фантастика'
 
     def test_get_books_for_children_get_two_books(self,collector):
         collector.add_new_book('Гордость и предубеждение и зомби')
